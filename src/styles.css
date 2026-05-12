@@ -379,10 +379,12 @@ th {
   border-collapse: separate;
   border-spacing: 0;
   min-width: 1100px;
+  table-layout: fixed;
 }
 
 .hours-grid-wrap.month-view .hours-grid {
   min-width: max-content;
+  width: max-content;
 }
 
 .hours-grid th,
@@ -396,9 +398,37 @@ th {
   min-width: 64px;
 }
 
-.hours-grid-wrap.month-view .hours-grid th:not(.project-column),
-.hours-grid-wrap.month-view .hours-grid td {
-  min-width: 52px;
+.hours-grid .project-col,
+.hours-grid .project-column {
+  width: 260px;
+}
+
+.hours-grid .day-col,
+.hours-grid .day-column {
+  width: 64px;
+}
+
+.hours-grid .total-col,
+.hours-grid .total-column {
+  width: 72px;
+}
+
+.hours-grid-wrap.month-view .hours-grid .day-col,
+.hours-grid-wrap.month-view .hours-grid .day-column {
+  max-width: 44px;
+  min-width: 44px;
+  width: 44px;
+}
+
+.hours-grid-wrap.month-view .hours-grid .total-col,
+.hours-grid-wrap.month-view .hours-grid .total-column {
+  max-width: 58px;
+  min-width: 58px;
+  width: 58px;
+}
+
+.hours-grid-wrap.month-view .hours-grid .day-column,
+.hours-grid-wrap.month-view .hours-grid .total-column {
   padding: 6px;
 }
 
@@ -438,8 +468,10 @@ th {
 
 .hours-cell {
   border-radius: 6px;
+  min-width: 0;
   padding: 8px;
   text-align: center;
+  width: 100%;
 }
 
 .month-view .hours-cell {

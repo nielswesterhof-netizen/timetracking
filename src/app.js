@@ -475,11 +475,16 @@ function hoursGrid(projectRows, visibleDays, entryMap) {
   return `
     <div class="hours-grid-wrap ${timeView === 'month' ? 'month-view' : 'week-view'}">
       <table class="hours-grid">
+        <colgroup>
+          <col class="project-col" />
+          ${visibleDays.map(() => '<col class="day-col" />').join('')}
+          <col class="total-col" />
+        </colgroup>
         <thead>
           <tr>
             <th class="project-column">Project</th>
-            ${visibleDays.map((day) => `<th class="${dayClass(day)}">${dayLabel(day)}</th>`).join('')}
-            <th>Total</th>
+            ${visibleDays.map((day) => `<th class="day-column ${dayClass(day)}">${dayLabel(day)}</th>`).join('')}
+            <th class="total-column">Total</th>
           </tr>
         </thead>
         <tbody>
@@ -510,9 +515,9 @@ function hoursGrid(projectRows, visibleDays, entryMap) {
               const dayTotal = Array.from(entryMap.values())
                 .filter((entry) => entry.entry_date === day && day.startsWith(timePeriod))
                 .reduce((sum, entry) => sum + Number(entry.hours || 0), 0);
-              return `<th class="${dayClass(day)}">${dayTotal ? dayTotal.toFixed(2) : ''}</th>`;
+              return `<th class="day-column ${dayClass(day)}">${dayTotal ? dayTotal.toFixed(2) : ''}</th>`;
             }).join('')}
-            <th>${Array.from(entryMap.values())
+            <th class="total-column">${Array.from(entryMap.values())
               .filter((entry) => totalDays.includes(entry.entry_date))
               .reduce((sum, entry) => sum + Number(entry.hours || 0), 0)
               .toFixed(2)}</th>
@@ -537,7 +542,7 @@ function sheetRow({ label, rowKey, projectId, leaveType, visibleDays, totalDays,
         const value = entry?.hours ? String(entry.hours).replace(/\.00$/, '') : '';
         const isOutsideMonth = !day.startsWith(timePeriod);
         return `
-          <td class="${dayClass(day)}">
+          <td class="day-column ${dayClass(day)}">
             <input
               class="hours-cell"
               inputmode="decimal"
@@ -551,7 +556,7 @@ function sheetRow({ label, rowKey, projectId, leaveType, visibleDays, totalDays,
           </td>
         `;
       }).join('')}
-      <td class="row-total">${rowTotal ? rowTotal.toFixed(2) : ''}</td>
+      <td class="row-total total-column">${rowTotal ? rowTotal.toFixed(2) : ''}</td>
     </tr>
   `;
 }

@@ -473,7 +473,7 @@ function hoursGrid(projectRows, visibleDays, entryMap) {
   const totalDays = visibleDays.filter((day) => day.startsWith(timePeriod));
 
   return `
-    <div class="hours-grid-wrap">
+    <div class="hours-grid-wrap ${timeView === 'month' ? 'month-view' : 'week-view'}">
       <table class="hours-grid">
         <thead>
           <tr>

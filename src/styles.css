@@ -166,6 +166,7 @@ nav {
 }
 
 .content {
+  min-width: 0;
   padding: 32px;
 }
 
@@ -216,6 +217,7 @@ nav {
 }
 
 .panel {
+  min-width: 0;
   padding: 22px;
 }
 
@@ -351,6 +353,7 @@ form.panel {
   border-radius: 8px;
   max-height: calc(100vh - 250px);
   overflow: auto;
+  width: 100%;
 }
 
 table {
@@ -373,7 +376,13 @@ th {
 }
 
 .hours-grid {
+  border-collapse: separate;
+  border-spacing: 0;
   min-width: 1100px;
+}
+
+.hours-grid-wrap.month-view .hours-grid {
+  min-width: max-content;
 }
 
 .hours-grid th,
@@ -404,12 +413,17 @@ th {
   min-width: 260px;
   position: sticky;
   text-align: left;
-  z-index: 3;
+  z-index: 4;
+}
+
+.hours-grid tbody .project-column {
+  box-shadow: 1px 0 0 #e2e8f0;
 }
 
 .hours-grid thead .project-column,
 .hours-grid tfoot .project-column {
   background: #f8fafc;
+  z-index: 5;
 }
 
 .hours-cell {

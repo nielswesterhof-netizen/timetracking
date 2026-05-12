@@ -98,7 +98,10 @@ function weekOptionsForMonth(month) {
 }
 
 function startApp() {
-  if (!window.APP_CONFIG?.supabaseUrl || !window.APP_CONFIG?.supabaseAnonKey) {
+  const supabaseUrl = window.APP_CONFIG?.supabaseUrl || window.APP_CONFIG?.SUPABASE_URL;
+  const supabaseAnonKey = window.APP_CONFIG?.supabaseAnonKey || window.APP_CONFIG?.SUPABASE_ANON_KEY;
+
+  if (!supabaseUrl || !supabaseAnonKey) {
     app.innerHTML = `
       <main class="center-screen">
         <section class="panel setup-warning">
@@ -111,8 +114,8 @@ function startApp() {
   }
 
   supabaseClient = createSimpleClient(
-    window.APP_CONFIG.supabaseUrl,
-    window.APP_CONFIG.supabaseAnonKey
+    supabaseUrl,
+    supabaseAnonKey
   );
 
   supabaseClient.auth.onAuthStateChange(async (_event, session) => {

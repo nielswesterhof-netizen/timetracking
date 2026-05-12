@@ -415,16 +415,16 @@ th {
 
 .hours-grid-wrap.month-view .hours-grid .day-col,
 .hours-grid-wrap.month-view .hours-grid .day-column {
-  max-width: 44px;
-  min-width: 44px;
-  width: 44px;
+  max-width: 64px;
+  min-width: 64px;
+  width: 64px;
 }
 
 .hours-grid-wrap.month-view .hours-grid .total-col,
 .hours-grid-wrap.month-view .hours-grid .total-column {
-  max-width: 58px;
-  min-width: 58px;
-  width: 58px;
+  max-width: 72px;
+  min-width: 72px;
+  width: 72px;
 }
 
 .hours-grid-wrap.month-view .hours-grid .day-column,

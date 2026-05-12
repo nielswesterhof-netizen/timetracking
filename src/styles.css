@@ -387,9 +387,19 @@ th {
 
 .hours-grid th,
 .hours-grid td {
-  min-width: 72px;
   padding: 8px;
   text-align: center;
+}
+
+.hours-grid th:not(.project-column),
+.hours-grid td {
+  min-width: 64px;
+}
+
+.hours-grid-wrap.month-view .hours-grid th:not(.project-column),
+.hours-grid-wrap.month-view .hours-grid td {
+  min-width: 52px;
+  padding: 6px;
 }
 
 .hours-grid thead th,
@@ -430,6 +440,10 @@ th {
   border-radius: 6px;
   padding: 8px;
   text-align: center;
+}
+
+.month-view .hours-cell {
+  padding: 6px;
 }
 
 .hours-cell:focus {
